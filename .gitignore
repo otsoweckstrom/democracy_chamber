@@ -2,7 +2,7 @@
 
 # dependencies
 app/node_modules
-src/node_modules
+server/node_modules
 /.pnp
 .pnp.js
 
@@ -10,7 +10,7 @@ src/node_modules
 /coverage
 
 # production
-/build
+app/build
 
 # misc
 .env
