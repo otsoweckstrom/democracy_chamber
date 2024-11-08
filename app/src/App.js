@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Polis from './components/Polis'
 
 function App() {
 	const [message, setMessage] = useState('')
@@ -18,8 +19,8 @@ function App() {
 
 	return (
 		<div className="App">
-			<h1>React Frontend Connected to Node.js Backend</h1>
 			<p>{message}</p>
+			<Polis />
 		</div>
 	)
 }
