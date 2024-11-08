@@ -1,0 +1,15 @@
+.poll-container {
+	height: 100%;
+}
+
+.poll-container iframe {
+	background-color: aqua;
+}
+
+.poll-container button {
+	visibility: hidden;
+}
+
+.poll-container iframe .data-test-footer {
+	visibility: hidden;
+}
