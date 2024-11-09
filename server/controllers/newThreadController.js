@@ -1,11 +1,11 @@
 const Link = require('../models/Link')
 
 // Add a new thread
-exports.addLink = async (req, res) => {
+exports.newThread = async (req, res) => {
 	try {
 		const { topic, description, url } = req.body
 		const newThread = new Thread({ topic, description, url })
-		await newLink.save()
+		await newThread.save()
 		res.status(201).json({
 			message: 'Thread saved successfully',
 			thread: newThread,

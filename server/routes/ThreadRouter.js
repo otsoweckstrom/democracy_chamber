@@ -1,6 +1,6 @@
 const express = require('express')
 const {
-	newThread
+	newThread,
 } = require('../controllers/newThreadController')
 const router = express.Router()
 

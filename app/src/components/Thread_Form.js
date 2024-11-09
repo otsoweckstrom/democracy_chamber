@@ -5,7 +5,7 @@ const ThreadForm = () => {
   const [description, setDescription] = useState('');
   const [vote, setVote] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission logic here
     const endpoint = isLogin ? `${process.env.REACT_APP_API_URL}/api/new_thread` : 
