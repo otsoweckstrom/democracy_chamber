@@ -45,7 +45,10 @@ const Polis = ({ height = '600px', width = '100%' }) => {
 						data-xid="true"
 						data-x_profile_image_url="true"
 						data-build="false"
-						data-conversation_id={link.url} // Use the full link URL directly
+						data-conversation_id={link.url.replace(
+							'https://pol.is/',
+							''
+						)}
 						style={{ width, height }}
 					/>
 				</div>

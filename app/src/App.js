@@ -54,12 +54,9 @@ function App() {
 					<LoginForm onLoginSuccess={setLoggedInUser} /> // Pass setter function
 				)}
 			</div>
-			<div className="polis-polls">
-				<Polis conversationId={'5zjcfnwtkf'} />
-				<Polis conversationId={'3utfdkbn45'} />
-			</div>
-			<h1>{polisThreads.url}</h1>
+
 			<AddPolisTopic />
+			<Polis />
 		</div>
 	)
 }
