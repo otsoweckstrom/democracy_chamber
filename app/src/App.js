@@ -6,6 +6,9 @@ import Threads from "./components/Threads";
 import AddPollPage from "./components/AddPollPage";
 import PromoteUserPoller from './components/promoteUserPoller';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles'; 
+import { Container, TextField } from '@mui/material';
+
 function App() {
   const [polisThreads, setPolisThreads] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -40,26 +43,26 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <div className="Threads test">
-        <Threads threads={threadsData} />
-      </div>
-      <div className="login-logout">
-        {loggedInUser ? (
-          <LogoutForm
-            onLogout={() => setLoggedInUser(null)}
-            loggedInUser={loggedInUser}
-          />
-        ) : (
-          <LoginForm setLoggedInUser={setLoggedInUser} />
-        )}
-      </div>
-	  <PromoteUserPoller loggedInUser={loggedInUser}/>
-      {(loggedInUser !== null &&
-        (loggedInUser.isAdmin || loggedInUser.isPoller)) && <AddPollPage />}
+		<div className="App">
+			<div className="Threads test">
+				<Threads threads={threadsData} />
+			</div>
+			<div className="login-logout">
+				{loggedInUser ? (
+				<LogoutForm
+					onLogout={() => setLoggedInUser(null)}
+					loggedInUser={loggedInUser}
+				/>
+				) : (
+				<LoginForm setLoggedInUser={setLoggedInUser} />
+				)}
+			</div>
+			<PromoteUserPoller loggedInUser={loggedInUser}/>
+			{(loggedInUser !== null &&
+				(loggedInUser.isAdmin || loggedInUser.isPoller)) && <AddPollPage />}
 
-      <Polis />
-    </div>
+			<Polis />
+	</div>
   );
 }
 
