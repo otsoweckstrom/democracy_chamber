@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Polis from './components/Polis'
+import "./App.css";
 
 function App() {
 	const [message, setMessage] = useState('')
@@ -19,8 +20,11 @@ function App() {
 
 	return (
 		<div className="App">
-			<p>{message}</p>
-			<Polis />
+			<h1>{"lorem ipsum"}</h1>
+			<div className='polis-polls'>
+				<Polis conversationId={"5zjcfnwtkf"} />
+				<Polis conversationId={"3utfdkbn45"} />
+			</div>
 		</div>
 	)
 }
