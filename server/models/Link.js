@@ -1,3 +1,4 @@
+const { MongoServerClosedError } = require('mongodb')
 const mongoose = require('mongoose')
 
 const linkSchema = new mongoose.Schema({
@@ -7,4 +8,28 @@ const linkSchema = new mongoose.Schema({
 	createdAt: { type: Date, default: Date.now },
 })
 
-module.exports = mongoose.model('Link', linkSchema)
+const threadSchema = new mongoose.Schema({
+	title: {type: String, required: true},
+	content: {type: String },
+
+	comments : [{
+		type: mongoose.Schema.types.ObjectId,
+		ref: "Comment"
+	}],
+	
+	votes : [{
+		upvoteCount: Number,
+		downvoteCount: Number
+	}]
+})
+
+const commentSchema = new mongoose.Schema({
+	content: {type: String, required: true}
+})
+
+
+const Thread = mongoose.model('Thread', threadSchema)
+const Comment = mongoose.model('Comment', commentSchema)
+const Link = mongoose.model('Link', linkSchema)
+
+module.exports = {Thread, Comment, Link};
