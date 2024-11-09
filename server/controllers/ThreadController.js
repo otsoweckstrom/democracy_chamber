@@ -10,8 +10,6 @@ exports.newThread = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: 'Error saving thread', error })
 	}
-<<<<<<< HEAD
-=======
 };
 
 
@@ -23,5 +21,4 @@ exports.getThreads = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: 'Error fetching threads', error })
 	}
->>>>>>> 9cb25d9 (Threads now visible on screen)
 }
