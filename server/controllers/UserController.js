@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
 
 		// In a real application, you would generate a JWT or session here
 		// For simplicity, just sending a success message
-		res.json({ message: 'Login successful', username: user.username }) // Include username
+		res.json({ message: 'Login successful', username: user.username, isadmin: user.admin, poller: user.poller}) // Include username and admin status
 	} catch (error) {
 		console.error('Login error:', error)
 		res.status(500).json({ message: 'Server error' })
