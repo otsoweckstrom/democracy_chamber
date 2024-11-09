@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm'
 import LogoutForm from './components/LogoutForm'
 import Threads from './components/Threads'
 import AddPollPage from './components/AddPollPage'
+import PromoteUserPoller from './components/promoteUserPoller'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
@@ -53,6 +54,7 @@ function App() {
 					<LoginForm onLoginSuccess={setLoggedInUser} />
 				)}
 			</div>
+			<PromoteUserPoller loggedInUser={loggedInUser}/>
 			<AddPollPage />
 			<Polis />
 		</div>
