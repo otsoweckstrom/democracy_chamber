@@ -1,7 +1,7 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const linkRoutes = require('./routes/linkRoutes')
+const linkRouter = require('./routes/LinkRouter')
 
 dotenv.config()
 
@@ -21,7 +21,7 @@ mongoose
 	.catch((error) => console.error('Error connecting to MongoDB:', error))
 
 // Routes
-app.use('/api/links', linkRoutes)
+app.use('/api/links', linkRouter)
 
 // Start the server
 app.listen(PORT, () => {

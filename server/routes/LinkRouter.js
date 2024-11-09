@@ -3,7 +3,7 @@ const {
 	addLink,
 	getLinks,
 	getLinkById,
-} = require('../controllers/linkController')
+} = require('../controllers/LinkController')
 const router = express.Router()
 
 router.post('/add', addLink)
