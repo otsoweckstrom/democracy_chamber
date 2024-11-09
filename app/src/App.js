@@ -5,6 +5,7 @@ import LogoutForm from './components/LogoutForm'
 import Threads from './components/Threads'
 import AddPollPage from './components/AddPollPage'
 import Navbar from './components/Navbar'
+import ThreadForm from './components/Thread_Form'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
@@ -42,6 +43,9 @@ function App() {
 	return (
 		<div className="App">
 			<Navbar />
+			<div className="Thread form">
+				<ThreadForm />
+			</div>
 			<div className="Threads test">
 				<Threads threads={threadsData} />
 			</div>
