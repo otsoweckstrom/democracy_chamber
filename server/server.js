@@ -2,11 +2,14 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const linkRouter = require('./routes/LinkRouter')
+const cors = require('cors')
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 5001
+
+app.use(cors())
 
 // Middleware
 app.use(express.json())
