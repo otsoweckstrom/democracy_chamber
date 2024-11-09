@@ -8,7 +8,26 @@ const ThreadForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission logic here
+    const endpoint = isLogin ? `${process.env.REACT_APP_API_URL}/api/new_thread` : 
     console.log({ topic, description, vote });
+  
+    try {
+      const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ topic, description }),
+      });
+
+      if (response.ok) {
+          console.log('Registration successful:', data);
+          }
+      else {
+          const errorData = await response.json();
+          setError(errorData.message);
+      }
+  } catch (err) {
+      console.error('Network error:', err);
+      setError('Network error. Please try again later.');
   };
 
   return (

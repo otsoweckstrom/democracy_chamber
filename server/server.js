@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const linkRouter = require('./routes/LinkRouter')
 const bcrypt = require('bcrypt')
+const ThreadRouter = require('./routes/ThreadRouter')
 
 dotenv.config()
 
@@ -85,6 +86,32 @@ app.post('/api/login', async (req, res) => {
 		res.status(500).json({ message: 'Server error' })
 	}
 })
+
+// Thread form
+app.post('/api/new_thread', async (req, res) =>{
+	try {
+		const {topic, description } = req.body
+
+		// Create new thread
+		const newThread = new Thread({ topic, description })
+		await newThread.save()
+
+		res.status(201).json({ message: "Thread added succesfully"})
+	
+	}
+	catch (error) {
+		console.error("Error while creating thread")
+		res.status(500).json({ message: "Server error"})
+	}
+})
+
+
+
+
+
+
+
+
 
 // Start the server
 app.listen(PORT, () => {

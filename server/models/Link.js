@@ -13,7 +13,7 @@ const threadSchema = new mongoose.Schema({
 	content: {type: String },
 
 	comments : [{
-		type: mongoose.Schema.types.ObjectId,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: "Comment"
 	}],
 	
