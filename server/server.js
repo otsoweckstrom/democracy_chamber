@@ -4,7 +4,6 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const linkRouter = require('./routes/LinkRouter')
 const bcrypt = require('bcrypt')
-const cors = require('cors')
 
 dotenv.config()
 

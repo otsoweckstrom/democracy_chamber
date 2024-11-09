@@ -5,6 +5,7 @@ import AddPolisTopic from './components/AddPolisTopic'
 import Threads from './components/Threads'
 
 function App() {
+	const [polisThreads, setPolisThreads] = useState([])
 	const threadsData = [
 		{
 			id: 1,
