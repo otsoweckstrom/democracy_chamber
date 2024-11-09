@@ -6,6 +6,7 @@ import Threads from './components/Threads'
 import AddPollPage from './components/AddPollPage'
 import Navbar from './components/Navbar'
 import ThreadForm from './components/Thread_Form'
+import PromoteUserPoller from './components/promoteUserPoller'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
@@ -59,7 +60,7 @@ function App() {
 					<LoginForm onLoginSuccess={setLoggedInUser} />
 				)}
 			</div>
-
+			<PromoteUserPoller loggedInUser={loggedInUser} />
 			<Polis />
 		</div>
 	)

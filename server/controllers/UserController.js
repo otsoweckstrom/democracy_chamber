@@ -34,22 +34,38 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    // Compare passwords
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
+		// Compare passwords
+		const isMatch = await bcrypt.compare(password, user.password)
+		if (!isMatch) {
+			return res.status(401).json({ message: 'Invalid credentials' })
+		}
+        
+		res.json({ message: 'Login successful', username: user.username, isAdmin: user.admin, isPoller: user.poller}) // Include username and admin status
+	} catch (error) {
+		console.error('Login error:', error)
+		res.status(500).json({ message: 'Server error' })
+	}
+}
 
-    // In a real application, you would generate a JWT or session here
-    // For simplicity, just sending a success message
-    res.json({
-      message: "Login successful",
-      username: user.username,
-      isAdmin: user.admin,
-      isPoller: user.poller,
-    }); // Include username and admin status
-  } catch (error) {
-    console.error("Login error:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-};
+exports.addpoller = async (req, res) => {
+	try {
+		const { isAdmin, userToPromote } = req.body
+
+        if (!isAdmin) {
+            return res.status(403).json({message: "Forbidden access"})
+        }
+
+		const user = await User.findOne({ userToPromote })
+		if (!user) {
+			return res.status(401).json({ message: 'Target user does not exist' })
+		}
+
+        user.poller = true
+		await user.save()
+
+		res.status(201).json({ message: 'User promoted succesfully' })
+	} catch (error) {
+		console.error('Promotion error:', error)
+		res.status(500).json({ message: 'Server error' })
+	}
+}
