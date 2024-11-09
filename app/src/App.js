@@ -59,7 +59,7 @@ function App() {
 					<LoginForm onLoginSuccess={setLoggedInUser} />
 				)}
 			</div>
-			<AddPollPage />
+
 			<Polis />
 		</div>
 	)
