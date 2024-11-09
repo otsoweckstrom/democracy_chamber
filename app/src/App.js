@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Polis from "./components/Polis";
 import LoginForm from "./components/LoginForm";
 import LogoutForm from "./components/LogoutForm";
-import AddPolisTopic from "./components/AddPolisTopic";
 import Threads from "./components/Threads";
+import AddPollPage from "./components/AddPollPage";
 
 function App() {
   const [polisThreads, setPolisThreads] = useState([]);
@@ -27,7 +27,6 @@ function App() {
   ];
 
   useEffect(() => {
-    // Fetch data from your Node.js backend.
     fetch(`${process.env.REACT_APP_API_URL}/api/links`)
       .then((response) => {
         if (!response.ok) {
@@ -45,21 +44,19 @@ function App() {
         <Threads threads={threadsData} />
       </div>
       <div className="login-logout">
-        {loggedInUser !== null ? (
+        {loggedInUser ? (
           <LogoutForm
             onLogout={() => setLoggedInUser(null)}
             loggedInUser={loggedInUser}
           />
         ) : (
-          <LoginForm setLoggedInUser={setLoggedInUser} /> // Pass setter function
+          <LoginForm setLoggedInUser={setLoggedInUser} />
         )}
       </div>
-      {loggedInUser !== null &&
-      (loggedInUser.isAdmin === true || loggedInUser.isPoller) ? (
-        <AddPolisTopic />
-      ) : (
-        <h1>log in to see poll link </h1>
-      )}
+
+      {(loggedInUser !== null &&
+        (loggedInUser.isAdmin || loggedInUser.isPoller)) && <AddPollPage />}
+
       <Polis />
     </div>
   );
