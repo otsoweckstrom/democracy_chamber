@@ -35,14 +35,11 @@ const Polis = () => {
 			{links.map((link) => (
 				<div key={link._id} className="polis-embed-container">
 					<div
+						data-topic={link.title}
+						data-view-id="false"
 						className="polis"
-						scrolling="false"
-						data-ucv="true"
-						data-ucw="false"
-						data-ucsf="true"
-						data-xid="true"
-						data-x_profile_image_url="true"
-						data-build="false"
+						data-auth_needed_to_vote="false"
+						data-build="true"
 						data-conversation_id={link.url.replace(
 							'https://pol.is/',
 							''
