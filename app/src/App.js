@@ -45,17 +45,21 @@ function App() {
         <Threads threads={threadsData} />
       </div>
       <div className="login-logout">
-        {loggedInUser ? (
+        {loggedInUser !== null ? (
           <LogoutForm
             onLogout={() => setLoggedInUser(null)}
             loggedInUser={loggedInUser}
           />
         ) : (
-          <LoginForm onLoginSuccess={setLoggedInUser} /> // Pass setter function
+          <LoginForm setLoggedInUser={setLoggedInUser} /> // Pass setter function
         )}
       </div>
-
-      <AddPolisTopic />
+      {loggedInUser !== null &&
+      (loggedInUser.isAdmin === true || loggedInUser.isPoller) ? (
+        <AddPolisTopic />
+      ) : (
+        <h1>log in to see poll link </h1>
+      )}
       <Polis />
     </div>
   );
