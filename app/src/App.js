@@ -11,23 +11,7 @@ import Navbar from './components/Navbar'
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
 	const [loggedInUser, setLoggedInUser] = useState(null)
-	const threadsData = [
-		{
-			id: 1,
-			title: 'First Thread',
-			content: 'This is the content of the first thread.',
-		},
-		{
-			id: 2,
-			title: 'Second Thread',
-			content: 'This is the content of the second thread.',
-		},
-		{
-			id: 3,
-			title: 'Third Thread',
-			content: 'This is the content of the third thread.',
-		},
-	]
+
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/links`)
@@ -48,7 +32,9 @@ function App() {
 				<div className="Thread form">
 					<ThreadForm />
 				</div>
-			</div>
+				<div className="Thread list">
+					< Threads />
+				</div>
 			<div className="login-logout">
 				{loggedInUser ? (
 					<LogoutForm
@@ -64,7 +50,7 @@ function App() {
 				(loggedInUser.isAdmin || loggedInUser.isPoller) && (
 					<AddPollPage />
 				)}
-
+			</div>
 			<Polis />
 		</div>
 	)

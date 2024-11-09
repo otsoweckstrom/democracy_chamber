@@ -10,4 +10,18 @@ exports.newThread = async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ message: 'Error saving thread', error })
 	}
+<<<<<<< HEAD
+=======
+};
+
+
+// Pulls a list of threads from MongoDB
+exports.getThreads = async (req, res) => {
+	try {
+		const threads = await Thread.find()
+		res.status(200).json(threads)
+	} catch (error) {
+		res.status(500).json({ message: 'Error fetching threads', error })
+	}
+>>>>>>> 9cb25d9 (Threads now visible on screen)
 }
