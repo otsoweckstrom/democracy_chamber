@@ -12,7 +12,7 @@ const LoginForm = ({onLoginSuccess}) => {
         e.preventDefault();
         setError(null);
 
-        const endpoint = isLogin ? `${process.env.REACT_APP_API_URL}/api/login` : `${process.env.REACT_APP_API_URL}/api/register`;
+        const endpoint = isLogin ? `${process.env.REACT_APP_API_URL}/api/user/login` : `${process.env.REACT_APP_API_URL}/api/user/register`;
 
         try {
             const response = await fetch(endpoint, {
