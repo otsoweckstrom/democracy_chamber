@@ -5,6 +5,7 @@ const dotenv = require('dotenv')
 const linkRouter = require('./routes/LinkRouter')
 const bcrypt = require('bcrypt')
 const ThreadRouter = require('./routes/ThreadRouter')
+const createAdminUser = require('./createAdminUser')
 
 dotenv.config()
 
@@ -36,7 +37,7 @@ const userSchema = new mongoose.Schema({
 	password: { type: String, required: true },
 })
 
-const User = mongoose.model('User', userSchema)
+const User = mongoose.models.User || mongoose.model('User', userSchema)
 
 // API Routes
 
