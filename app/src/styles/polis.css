@@ -1,22 +1,48 @@
 .polis-container {
 	display: flex;
 	flex-direction: column;
-}
-
-.polis-embed-container {
+	align-items: flex-end; /* Align everything to the right */
+	padding-right: 20px; /* Add more space on the right side */
+  }
+  
+  .polis-embed-container {
 	display: flex;
 	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	margin-top: 150vh;
-}
-
-.polis-embed-container:not(:first-child) {
-	margin-top: 35vh;
-}
-
-.polis {
+	width: 25%; /* Make the boxes slightly bigger by increasing the width */
+	height: auto; /* Let the height adjust based on content */
+	margin-top: 1vh; /* Keep the tight margin between boxes */
+	padding: 10px; /* Add a little more padding inside the boxes */
+	background-color: #fff; /* White background for the box */
+	border-radius: 8px; /* Slightly rounded corners for a cleaner look */
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Larger and darker shadow */
+	transition: transform 0.3s ease-in-out; /* Smooth hover transition */
+  }
+  
+  .polis-embed-container:not(:first-child) {
+	margin-top: 1vh; /* Apply the same reduced margin for subsequent boxes */
+  }
+  
+  .polis {
 	display: flex;
 	justify-content: center;
-	transform: scale(1.35);
-}
+	transform: scale(1); /* Keep the scale normal to fit in the box */
+  }
+  
+  .polis-embed-container:hover {
+	transform: translateY(-3px); /* Slight lift effect on hover */
+  }
+  
+  @media (max-width: 768px) {
+	.polis-embed-container {
+	  width: 30%; /* Adjust width for tablets to make the boxes slightly larger */
+	  margin-top: 2vh; /* Slightly reduce the margin on tablets */
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.polis-embed-container {
+	  width: 50%; /* Make boxes a bit larger for small screens */
+	  margin-top: 2vh; /* Adjust the margin for mobile screens */
+	}
+  }
+  
