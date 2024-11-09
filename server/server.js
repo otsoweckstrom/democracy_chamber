@@ -22,8 +22,8 @@ mongoose
 		useUnifiedTopology: true,
 	})
 	.then(async () => {
-		console.log('Connected to MongoDB')
-		await createAdminUser()
+	console.log('Connected to MongoDB')
+	await createAdminUser();
 	})
 	.catch((error) => console.error('Error connecting to MongoDB:', error))
 
