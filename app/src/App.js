@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import Polis from './components/Polis'
-import LoginForm from './components/LoginForm';
-import LogoutForm from './components/LogoutForm';
+import LoginForm from './components/LoginForm'
+import LogoutForm from './components/LogoutForm'
 import AddPolisTopic from './components/AddPolisTopic'
 import Threads from './components/Threads'
 
 function App() {
-    const [message, setMessage] = useState('');
-    const [loggedInUser, setLoggedInUser] = useState(null);
+	const [polisThreads, setPolisThreads] = useState([])
+	const [loggedInUser, setLoggedInUser] = useState(null)
 	const threadsData = [
 		{
 			id: 1,
@@ -44,9 +44,12 @@ function App() {
 			<div className="Threads test">
 				<Threads threads={threadsData} />
 			</div>
-			<div clasNane='login-logout'>
-				{loggedInUser ? ( 
-					<LogoutForm onLogout={() => setLoggedInUser(null)} loggedInUser={loggedInUser} />
+			<div clasNane="login-logout">
+				{loggedInUser ? (
+					<LogoutForm
+						onLogout={() => setLoggedInUser(null)}
+						loggedInUser={loggedInUser}
+					/>
 				) : (
 					<LoginForm onLoginSuccess={setLoggedInUser} /> // Pass setter function
 				)}
