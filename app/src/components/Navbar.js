@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+import tenor from '../assets/cat.gif'
 import '../styles/navbar.css'
 
 const Navbar = () => {
@@ -17,7 +18,10 @@ const Navbar = () => {
 				</li>
 				¨
 			</ul>
-			<div className="profile-logo"></div>
+			<div className="profile-logo">
+				{' '}
+				<img src={tenor} style={{ borderRadius: 8, height: 70 }} />
+			</div>
 			<div className="navbar-toggle" onClick={handleToggle}>
 				<span className="bar"></span>
 				<span className="bar"></span>

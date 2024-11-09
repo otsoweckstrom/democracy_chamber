@@ -8,11 +8,11 @@
 	flex-direction: column;
 	width: 100%;
 	height: 100%;
-	margin-top: 150vh;
+	margin-top: 30vh;
 }
 
 .polis-embed-container:not(:first-child) {
-	margin-top: 35vh;
+	margin-top: 50vh;
 }
 
 .polis {
