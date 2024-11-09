@@ -1,15 +1,18 @@
-.poll-container {
+.polis-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.polis-embed-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
 	height: 100%;
+	margin-bottom: 20vh;
 }
 
-.poll-container iframe {
-	background-color: aqua;
-}
-
-.poll-container button {
-	visibility: hidden;
-}
-
-.poll-container iframe .data-test-footer {
-	visibility: hidden;
+.polis {
+	display: flex;
+	justify-content: center;
+	transform: scale(1.2);
 }
