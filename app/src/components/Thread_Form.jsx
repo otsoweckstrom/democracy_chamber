@@ -26,7 +26,7 @@ const ThreadForm = () => {
 				setError(errorData.message)
 			}
 		} catch (err) {
-			console.error('Network error:', err)
+			console.error('AaAAAAAAAAA:', err)
 			setError('Network error. Please try again later.')
 		}
 	}
