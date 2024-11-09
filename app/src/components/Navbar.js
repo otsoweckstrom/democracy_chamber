@@ -1,34 +1,21 @@
-import React, { useState } from 'react'
+// Navbar.js
+import React, { useState } from 'react';
+import '../styles/navbar.css';
 
-import tenor from '../assets/cat.gif'
-import '../styles/navbar.css'
+const Navbar = ({ onTabChange }) => {
+  const handleTabClick = (tab) => {
+    onTabChange(tab);
+  };
 
-const Navbar = () => {
-	const [isOpen, setIsOpen] = useState(false)
+  return (
+    <nav className="navbar">
+      <div className="navbar-buttons">
+        <button onClick={() => handleTabClick('polis')}>Polis</button>
+        <div className="separator"></div> {/* Separator line */}
+        <button onClick={() => handleTabClick('threads')}>Threads</button>
+      </div>
+    </nav>
+  );
+};
 
-	const handleToggle = () => {
-		setIsOpen(!isOpen)
-	}
-
-	return (
-		<nav className="navbar">
-			<ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
-				<li>
-					<a href="#home">Home</a>
-				</li>
-				¨
-			</ul>
-			<div className="profile-logo">
-				{' '}
-				<img src={tenor} style={{ borderRadius: 8, height: 70 }} />
-			</div>
-			<div className="navbar-toggle" onClick={handleToggle}>
-				<span className="bar"></span>
-				<span className="bar"></span>
-				<span className="bar"></span>
-			</div>
-		</nav>
-	)
-}
-
-export default Navbar
+export default Navbar;

@@ -5,7 +5,6 @@ import LogoutForm from './components/LogoutForm'
 import AddPollPage from './components/AddPollPage'
 import PromoteUserPoller from './components/promoteUserPoller'
 import ThreadForm from './components/ThreadForm'
-
 import Navbar from './components/Navbar'
 
 function App() {
@@ -41,33 +40,53 @@ function App() {
 			.catch((err) => console.error('Error fetching data:', err))
 	}, [])
 
+	const [activeTab, setActiveTab] = useState('polis');
+
+	const handleTabChange = (tab) => {
+	  setActiveTab(tab);
+	};
+  
+  
+  
 	return (
-		<div className="App">
-			<Navbar />
-			<div className="Threads test">
-				<div className="Thread form">
-					<ThreadForm />
-				</div>
-			</div>
-			<div className="login-logout">
-				{loggedInUser ? (
-					<LogoutForm
-						onLogout={() => setLoggedInUser(null)}
-						loggedInUser={loggedInUser}
-					/>
-				) : (
-					<LoginForm setLoggedInUser={setLoggedInUser} />
-				)}
-			</div>
-			<PromoteUserPoller loggedInUser={loggedInUser} />
-			{loggedInUser !== null &&
-				(loggedInUser.isAdmin || loggedInUser.isPoller) && (
-					<AddPollPage />
-				)}
-
+	  <div className="App">
+		<Navbar className="navbar" onTabChange={handleTabChange} />
+  
+		{activeTab === 'polis' && ( // Conditionally render Polis
+		  <div>
 			<Polis />
-		</div>
-	)
-}
-
-export default App
+		  </div>
+		)}
+  
+  
+  
+		{activeTab === 'threads' && ( // Conditionally render Threads
+		  <div className="Threads test">
+					  <div className="Thread form">
+						  <ThreadForm/>
+					  </div>
+		  </div>
+		)}
+  
+		{/* Rest of your components remain the same */}
+		 <div className="login-logout">
+				  {loggedInUser ? (
+					  <LogoutForm
+						  onLogout={() => setLoggedInUser(null)}
+						  loggedInUser={loggedInUser}
+					  />
+				  ) : (
+					  <LoginForm setLoggedInUser={setLoggedInUser} />
+				  )}
+			  </div>
+			  <PromoteUserPoller loggedInUser={loggedInUser} />
+			  {loggedInUser !== null &&
+				  (loggedInUser.isAdmin || loggedInUser.isPoller) && (
+					  <AddPollPage />
+				  )}
+	   
+	  </div>
+	);
+  }
+  
+  export default App;
