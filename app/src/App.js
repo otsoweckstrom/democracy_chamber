@@ -5,13 +5,28 @@ import LogoutForm from './components/LogoutForm'
 import AddPollPage from './components/AddPollPage'
 import PromoteUserPoller from './components/promoteUserPoller'
 import ThreadForm from './components/ThreadForm'
-
-import Navbar from './components/Navbar'
+import Threads from './components/Threads'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
 	const [loggedInUser, setLoggedInUser] = useState(null)
-
+	const threadsData = [
+		{
+			id: 1,
+			title: 'First Thread',
+			content: 'This is the content of the first thread.',
+		},
+		{
+			id: 2,
+			title: 'Second Thread',
+			content: 'This is the content of the second thread.',
+		},
+		{
+			id: 3,
+			title: 'Third Thread',
+			content: 'This is the content of the third thread.',
+		},
+	]
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/links`)
@@ -27,7 +42,6 @@ function App() {
 
 	return (
 		<div className="App">
-			<Navbar />
 			<div className="Threads test">
 				<div className="Thread form">
 					<ThreadForm />
