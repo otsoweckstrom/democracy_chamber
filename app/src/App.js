@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import Polis from './components/Polis'
 import "./App.css";
+import LoginForm from './components/LoginForm';
+import LogoutForm from './components/LogoutForm';
 
 function App() {
-	const [message, setMessage] = useState('')
+    const [message, setMessage] = useState('');
+    const [loggedInUser, setLoggedInUser] = useState(null);
 
 	useEffect(() => {
 		// Fetch data from your Node.js backend
@@ -24,6 +27,13 @@ function App() {
 			<div className='polis-polls'>
 				<Polis conversationId={"5zjcfnwtkf"} />
 				<Polis conversationId={"3utfdkbn45"} />
+			</div>
+			<div clasNane='login-logout'>
+				{loggedInUser ? ( 
+					<LogoutForm onLogout={() => setLoggedInUser(null)} loggedInUser={loggedInUser} />
+				) : (
+					<LoginForm onLoginSuccess={setLoggedInUser} /> // Pass setter function
+				)}
 			</div>
 		</div>
 	)
