@@ -49,7 +49,6 @@ const PromoteUserPoller = ({loggedInUser}) => {
                     {promotionMessage && <p>{promotionMessage}</p>} {}
                 </div>
             )}
-            {(loggedInUser == null || !loggedInUser.isAdmin) && <p>You do not have permission to promote users.</p>}
         </div>
     );
 };
