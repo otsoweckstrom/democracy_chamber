@@ -27,7 +27,7 @@ function App() {
 	]
 
 	useEffect(() => {
-		// Fetch data from your Node.js backend
+		// Fetch data from your Node.js backend.
 		fetch(`${process.env.REACT_APP_API_URL}/api/links`)
 			.then((response) => {
 				if (!response.ok) {
