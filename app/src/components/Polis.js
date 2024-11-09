@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import '../styles/polis.css'
 
 // Embed Pol.is polls using URLs directly from MongoDB
-const Polis = ({ height = '600px', width = '100%' }) => {
+const Polis = () => {
 	const [links, setLinks] = useState([])
 
 	useEffect(() => {
@@ -32,13 +33,10 @@ const Polis = ({ height = '600px', width = '100%' }) => {
 	return (
 		<div className="polis-container">
 			{links.map((link) => (
-				<div
-					key={link._id}
-					className="polis-embed-container"
-					style={{ marginBottom: '40px' }}
-				>
+				<div key={link._id} className="polis-embed-container">
 					<div
 						className="polis"
+						scrolling="false"
 						data-ucv="true"
 						data-ucw="false"
 						data-ucsf="true"
@@ -49,7 +47,6 @@ const Polis = ({ height = '600px', width = '100%' }) => {
 							'https://pol.is/',
 							''
 						)}
-						style={{ width, height }}
 					/>
 				</div>
 			))}
