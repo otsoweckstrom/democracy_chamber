@@ -37,7 +37,17 @@ const Polis = ({ height = '600px', width = '100%' }) => {
 					className="polis-embed-container"
 					style={{ marginBottom: '40px' }}
 				>
-					<h1>{link.url}</h1>
+					<div
+						className="polis"
+						data-ucv="true"
+						data-ucw="false"
+						data-ucsf="true"
+						data-xid="true"
+						data-x_profile_image_url="true"
+						data-build="false"
+						data-conversation_id={link.url} // Use the full link URL directly
+						style={{ width, height }}
+					/>
 				</div>
 			))}
 		</div>
