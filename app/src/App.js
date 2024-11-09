@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm'
 import LogoutForm from './components/LogoutForm'
 import AddPolisTopic from './components/AddPolisTopic'
 import Threads from './components/Threads'
+import ThreadForm from './components/Thread_Form'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
@@ -41,6 +42,9 @@ function App() {
 
 	return (
 		<div className="App">
+			<div className="Thread form">
+				<ThreadForm />
+			</div>
 			<div className="Threads test">
 				<Threads threads={threadsData} />
 			</div>
