@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const linkRouter = require('./routes/LinkRouter')
 const userRouter = require('./routes/UserRouter')
+const createAdminUser = require('./createAdminUser')
 
 dotenv.config()
 
@@ -22,7 +23,7 @@ mongoose
 	})
 	.then(async () => {
 	console.log('Connected to MongoDB')
-	//await createAdminUser();
+	await createAdminUser();
 	})
 	.catch((error) => console.error('Error connecting to MongoDB:', error))
 
