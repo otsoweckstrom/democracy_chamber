@@ -1,0 +1,44 @@
+.threads {
+    display: flex;
+    flex-direction: column;  /* Stack threads vertically */
+    align-items: center; /* Center threads horizontally */
+    width: 100%; /* Full width */
+    padding: 20px;
+}
+
+.threads > div { /* Style each individual thread container */
+    width: 70%; /* Similar width to Polis */
+    max-width: 800px;
+    margin-top: 2vh; /* Spacing between threads */
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);  /* Nice shadow */
+    transition: transform 0.3s ease-in-out; /* Hover effect */
+}
+
+.threads > div:hover {
+    transform: translateY(-3px); /* Lift on hover */
+}
+
+.thread h1 { /* Style the thread title */
+    margin-bottom: 10px;  /* Space between title and content */
+    font-size: 1.4rem;
+}
+
+.thread p { /* Style the thread content and other text */
+  margin-bottom: 8px;
+}
+
+/* Responsive Adjustments (similar to polis.css, adjust as needed) */
+@media (max-width: 768px) {
+    .threads > div {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .threads > div {
+        width: 90%;
+    }
+}

@@ -1,92 +1,69 @@
-import React, { useEffect, useState } from 'react'
-import Polis from './components/Polis'
-import LoginForm from './components/LoginForm'
-import LogoutForm from './components/LogoutForm'
-import AddPollPage from './components/AddPollPage'
-import PromoteUserPoller from './components/promoteUserPoller'
-import ThreadForm from './components/ThreadForm'
-import Navbar from './components/Navbar'
+import React, { useEffect, useState } from 'react';
+import Polis from './components/Polis';
+import LoginForm from './components/LoginForm';
+import LogoutForm from './components/LogoutForm';
+import AddPollPage from './components/AddPollPage';
+import PromoteUserPoller from './components/promoteUserPoller';
+import ThreadForm from './components/ThreadForm';
+import Navbar from './components/Navbar';
+import Threads from './components/Threads';
 
 function App() {
-	const [polisThreads, setPolisThreads] = useState([])
-	const [loggedInUser, setLoggedInUser] = useState(null)
-	const threadsData = [
-		{
-			id: 1,
-			title: 'First Thread',
-			content: 'This is the content of the first thread.',
-		},
-		{
-			id: 2,
-			title: 'Second Thread',
-			content: 'This is the content of the second thread.',
-		},
-		{
-			id: 3,
-			title: 'Third Thread',
-			content: 'This is the content of the third thread.',
-		},
-	]
+    const [polisThreads, setPolisThreads] = useState([]);
+    const [loggedInUser, setLoggedInUser] = useState(null);
+    const [activeTab, setActiveTab] = useState('polis');
 
-	useEffect(() => {
-		fetch(`${process.env.REACT_APP_API_URL}/api/links`)
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error('Network response was not ok')
-				}
-				return response.json()
-			})
-			.then((data) => setPolisThreads(data))
-			.catch((err) => console.error('Error fetching data:', err))
-	}, [])
 
-	const [activeTab, setActiveTab] = useState('polis');
+    useEffect(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/api/links`)
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then((data) => setPolisThreads(data))
+            .catch((err) => console.error('Error fetching data:', err));
+    }, []);
 
-	const handleTabChange = (tab) => {
-	  setActiveTab(tab);
-	};
-  
-  
-  
-	return (
-	  <div className="App">
-		<Navbar className="navbar" onTabChange={handleTabChange} />
-  
-		{activeTab === 'polis' && ( // Conditionally render Polis
-		  <div>
-			<Polis />
-		  </div>
-		)}
-  
-  
-  
-		{activeTab === 'threads' && ( // Conditionally render Threads
-		  <div className="Threads test">
-					  <div className="Thread form">
-						  <ThreadForm/>
-					  </div>
-		  </div>
-		)}
-  
-		{/* Rest of your components remain the same */}
-		 <div className="login-logout">
-				  {loggedInUser ? (
-					  <LogoutForm
-						  onLogout={() => setLoggedInUser(null)}
-						  loggedInUser={loggedInUser}
-					  />
-				  ) : (
-					  <LoginForm setLoggedInUser={setLoggedInUser} />
-				  )}
-			  </div>
-			  <PromoteUserPoller loggedInUser={loggedInUser} />
-			  {loggedInUser !== null &&
-				  (loggedInUser.isAdmin || loggedInUser.isPoller) && (
-					  <AddPollPage />
-				  )}
-	   
-	  </div>
-	);
-  }
-  
-  export default App;
+    const handleTabChange = (tab) => {
+        setActiveTab(tab);
+    };
+
+    return (
+        <div className="App">
+            <Navbar onTabChange={handleTabChange} /> {/* No need for className here */}
+			<div className="login-logout">
+                        {loggedInUser ? (
+                            <LogoutForm onLogout={() => setLoggedInUser(null)} loggedInUser={loggedInUser} />
+                        ) : (
+                            <LoginForm setLoggedInUser={setLoggedInUser} />
+                        )}
+                    </div>
+                    <PromoteUserPoller loggedInUser={loggedInUser} />
+                    {loggedInUser !== null && (loggedInUser.isAdmin || loggedInUser.isPoller) && <AddPollPage />}
+
+            {activeTab === 'polis' && (
+                <div>
+                    <Polis />
+                    {}
+					</div>
+            )}
+
+			{activeTab === 'threads' && (
+                <div className="Threads test">
+                    <div className="Thread form">
+                        <ThreadForm />
+                    </div>
+					<div className="Thread list">
+                        <Threads />
+                    </div> 
+                    {/* Components ONLY for Threads tab (if any) */}
+                </div>
+            )}
+
+			</div>
+    );
+}
+
+export default App;

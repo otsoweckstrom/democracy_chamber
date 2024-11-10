@@ -1,47 +1,46 @@
 .polis-container {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end; /* Align everything to the right */
-	padding-right: 20px; /* Add more space on the right side */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the items horizontally */
+    padding: 20px; /* Consistent padding all around */
+    width: 100%; /* Occupy full width of parent */
 }
 
 .polis-embed-container {
-	display: flex;
-	flex-direction: column;
-	width: 25%; /* Make the boxes slightly bigger by increasing the width */
-	height: auto; /* Let the height adjust based on content */
-	margin-top: 1vh; /* Keep the tight margin between boxes */
-	padding: 10px; /* Add a little more padding inside the boxes */
-	background-color: #fff; /* White background for the box */
-	border-radius: 8px; /* Slightly rounded corners for a cleaner look */
-	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5); /* Larger and darker shadow */
-	transition: transform 0.3s ease-in-out; /* Smooth hover transition */
+    display: flex;
+    flex-direction: column;
+    width: 70%; /* Significantly wider */
+    max-width: 800px; /* Set a maximum width so it doesn't get too wide on large screens */
+    height: auto;
+    margin-top: 2vh; /* Slightly more vertical spacing between boxes */
+    padding: 15px;  /* A bit more padding */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
 }
 
-.polis-embed-container:not(:first-child) {
-	margin-top: 1vh; /* Apply the same reduced margin for subsequent boxes */
-}
 
 .polis {
-	display: flex;
-	justify-content: center;
-	transform: scale(1); /* Keep the scale normal to fit in the box */
+    display: flex;
+    justify-content: center; /* Not strictly necessary as parent is already centering */
 }
+
 
 .polis-embed-container:hover {
-	transform: translateY(-3px); /* Slight lift effect on hover */
+    transform: translateY(-3px);
 }
 
+
+/* Responsive Adjustments - You might want to adjust these breakpoints based on your design */
 @media (max-width: 768px) {
-	.polis-embed-container {
-		width: 30%; /* Adjust width for tablets to make the boxes slightly larger */
-		margin-top: 2vh; /* Slightly reduce the margin on tablets */
-	}
+    .polis-embed-container {
+        width: 80%; /* Adjust for tablets */
+    }
 }
 
 @media (max-width: 480px) {
-	.polis-embed-container {
-		width: 50%; /* Make boxes a bit larger for small screens */
-		margin-top: 2vh; /* Adjust the margin for mobile screens */
-	}
+    .polis-embed-container {
+        width: 90%; /* Almost full width on small screens */
+    }
 }
