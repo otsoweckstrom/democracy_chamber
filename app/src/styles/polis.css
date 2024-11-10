@@ -1,46 +1,44 @@
 .polis-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center the items horizontally */
-    padding: 20px; /* Consistent padding all around */
-    width: 100%; /* Occupy full width of parent */
+display: flex;
+flex-direction: column;
+align-items: center; 
+padding: 20px; 
+width: 100%;
+height: 100%; /* Full height */
 }
 
 .polis-embed-container {
-    display: flex;
-    flex-direction: column;
-    width: 70%; /* Significantly wider */
-    max-width: 800px; /* Set a maximum width so it doesn't get too wide on large screens */
-    height: auto;
-    margin-top: 2vh; /* Slightly more vertical spacing between boxes */
-    padding: 15px;  /* A bit more padding */
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease-in-out;
+display: flex;
+flex-direction: column;
+width: 70%;
+max-width: 800px;
+height: 100%;
+margin-top: 2vh; 
+padding: 15px;
+background-color: #fff;
+border-radius: 8px;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+transition: transform 0.3s ease-in-out;
+overflow: hidden; /* Prevents internal scrolling */
 }
-
 
 .polis {
-    display: flex;
-    justify-content: center; /* Not strictly necessary as parent is already centering */
+display: flex;
+justify-content: center;
 }
-
 
 .polis-embed-container:hover {
-    transform: translateY(-3px);
+transform: translateY(-3px);
 }
 
-
-/* Responsive Adjustments - You might want to adjust these breakpoints based on your design */
 @media (max-width: 768px) {
-    .polis-embed-container {
-        width: 80%; /* Adjust for tablets */
-    }
+.polis-embed-container {
+	width: 80%;
+}
 }
 
 @media (max-width: 480px) {
-    .polis-embed-container {
-        width: 90%; /* Almost full width on small screens */
-    }
+.polis-embed-container {
+	width: 90%;
+}
 }
