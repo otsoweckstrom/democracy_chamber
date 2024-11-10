@@ -28,16 +28,17 @@ const LogoutForm = ({ onLogout, loggedInUser }) => {
 			<Box
 				sx={{
 					display: 'flex',
-					flexDirection: 'row',
-					alignItems: 'center',
-					justifyContent:
-						'space-between' /* Space between username and button */,
+					flexDirection: 'column',
+					justifyContent: 'space-between',
+					margin: 1,
 					padding: 2,
+					height: 80,
 				}}
 			>
 				<Typography variant="body1">
 					Welcome, {loggedInUser.username}!
 				</Typography>
+
 				<Button
 					variant="outlined"
 					color="primary"

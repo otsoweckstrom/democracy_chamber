@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-
+import { Button, TextField, Checkbox } from '@mui/material'
+import '../styles/threadform.css'
 
 const ThreadForm = () => {
 	const [topic, setTopic] = useState('')
@@ -32,53 +33,55 @@ const ThreadForm = () => {
 		}
 	}
 	return (
-		<form onSubmit={handleSubmit}>
-			<div>
-				<label htmlFor="topic">Topic:</label>
-				<input
-					type="text"
-					id="topic"
-					value={topic}
-					onChange={(e) => setTopic(e.target.value)}
-					required
-				/>
-			</div>
-			<div>
-				<label htmlFor="description">Description:</label>
-				<textarea
-					id="description"
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
-					required
-				/>
-			</div>
-			<div>
-				<label>Poll:</label>
+		<div className="thread-form">
+			<form onSubmit={handleSubmit}>
 				<div>
-					<input
-						type="radio"
-						id="upvote"
-						name="vote"
-						value="upvote"
-						checked={vote === 'upvote'}
-						onChange={(e) => setVote(e.target.value)}
+					<label htmlFor="topic">Topic:</label>
+					<TextField
+						type="text"
+						id="topic"
+						value={topic}
+						onChange={(e) => setTopic(e.target.value)}
+						required
 					/>
-					<label htmlFor="upvote">Upvote</label>
 				</div>
 				<div>
-					<input
-						type="radio"
-						id="downvote"
-						name="vote"
-						value="downvote"
-						checked={vote === 'downvote'}
-						onChange={(e) => setVote(e.target.value)}
+					<label htmlFor="description">Description:</label>
+					<TextField
+						id="description"
+						value={description}
+						onChange={(e) => setDescription(e.target.value)}
+						required
 					/>
-					<label htmlFor="downvote">Downvote</label>
 				</div>
-			</div>
-			<button type="submit">Submit</button>
-		</form>
+				<div>
+					<label>Poll:</label>
+					<div>
+						<Checkbox
+							type="radio"
+							id="upvote"
+							name="vote"
+							value="upvote"
+							checked={vote === 'upvote'}
+							onChange={(e) => setVote(e.target.value)}
+						/>
+						<label htmlFor="upvote">Upvote</label>
+					</div>
+					<div>
+						<Checkbox
+							type="radio"
+							id="downvote"
+							name="vote"
+							value="downvote"
+							checked={vote === 'downvote'}
+							onChange={(e) => setVote(e.target.value)}
+						/>
+						<label htmlFor="downvote">Downvote</label>
+					</div>
+				</div>
+				<Button type="submit">Submit</Button>
+			</form>
+		</div>
 	)
 }
 
