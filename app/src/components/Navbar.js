@@ -12,20 +12,14 @@ const Navbar = () => {
 
 	return (
 		<nav className="navbar">
-			<ul className={`navbar-links ${isOpen ? 'active' : ''}`}>
+			<ul className={`navbar-links`}>
 				<li>
 					<a href="#home">Home</a>
+					<a>Login</a>
 				</li>
-				¨
 			</ul>
 			<div className="profile-logo">
-				{' '}
 				<img src={tenor} style={{ borderRadius: 8, height: 70 }} />
-			</div>
-			<div className="navbar-toggle" onClick={handleToggle}>
-				<span className="bar"></span>
-				<span className="bar"></span>
-				<span className="bar"></span>
 			</div>
 		</nav>
 	)

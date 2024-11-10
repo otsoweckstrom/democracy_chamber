@@ -25,6 +25,7 @@ const Polis = () => {
 			} catch (error) {
 				console.error('Error fetching links:', error)
 			}
+			console.log(`${process.env.REACT_APP_API_URL}/api/links`)
 		}
 
 		fetchLinks()
