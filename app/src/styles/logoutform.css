@@ -1,0 +1,10 @@
+.logout-form-container {
+	position: fixed;
+	top: 20px; /* Adjust top position */
+	right: 20px; /* Adjust right position */
+	z-index: 1000; /* Ensure it's above other elements */
+	padding: 10px; /* Adjust padding */
+	display: flex;
+
+	align-items: center; /* Center items vertically */
+}

@@ -1,25 +1,20 @@
+// Navbar.js
 import React, { useState } from 'react'
-
-import tenor from '../assets/cat.gif'
 import '../styles/navbar.css'
 
-const Navbar = () => {
-	const [isOpen, setIsOpen] = useState(false)
-
-	const handleToggle = () => {
-		setIsOpen(!isOpen)
+const Navbar = ({ onTabChange }) => {
+	const handleTabClick = (tab) => {
+		onTabChange(tab)
 	}
 
 	return (
 		<nav className="navbar">
-			<ul className={`navbar-links`}>
-				<li>
-					<a href="#home">Home</a>
-					<a>Login</a>
-				</li>
-			</ul>
-			<div className="profile-logo">
-				<img src={tenor} style={{ borderRadius: 8, height: 70 }} />
+			<div className="navbar-buttons">
+				<button onClick={() => handleTabClick('polis')}>Polis</button>
+				<div className="separator"></div> {/* Separator line */}
+				<button onClick={() => handleTabClick('threads')}>
+					Threads
+				</button>
 			</div>
 		</nav>
 	)

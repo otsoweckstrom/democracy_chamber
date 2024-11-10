@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 const ThreadForm = () => {
 	const [topic, setTopic] = useState('')
 	const [description, setDescription] = useState('')
@@ -9,7 +10,7 @@ const ThreadForm = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		// Handle form submission logic here
-		const endpoint = `${process.env.REACT_APP_API_URL}/api/new_thread/newThread`
+		const endpoint = `${process.env.REACT_APP_API_URL}/api/threads/newThread`
 		console.log({ topic, description, vote })
 
 		try {

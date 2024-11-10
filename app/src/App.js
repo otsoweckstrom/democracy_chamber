@@ -5,29 +5,13 @@ import LogoutForm from './components/LogoutForm'
 import AddPollPage from './components/AddPollPage'
 import PromoteUserPoller from './components/promoteUserPoller'
 import ThreadForm from './components/ThreadForm'
-
 import Navbar from './components/Navbar'
+import Threads from './components/Threads'
 
 function App() {
 	const [polisThreads, setPolisThreads] = useState([])
 	const [loggedInUser, setLoggedInUser] = useState(null)
-	const threadsData = [
-		{
-			id: 1,
-			title: 'First Thread',
-			content: 'This is the content of the first thread.',
-		},
-		{
-			id: 2,
-			title: 'Second Thread',
-			content: 'This is the content of the second thread.',
-		},
-		{
-			id: 3,
-			title: 'Third Thread',
-			content: 'This is the content of the third thread.',
-		},
-	]
+	const [activeTab, setActiveTab] = useState('polis')
 
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_API_URL}/api/links`)
@@ -41,14 +25,14 @@ function App() {
 			.catch((err) => console.error('Error fetching data:', err))
 	}, [])
 
+	const handleTabChange = (tab) => {
+		setActiveTab(tab)
+	}
+
 	return (
 		<div className="App">
-			<Navbar />
-			<div className="Threads test">
-				<div className="Thread form">
-					<ThreadForm />
-				</div>
-			</div>
+			<Navbar onTabChange={handleTabChange} />{' '}
+			{/* No need for className here */}
 			<div className="login-logout">
 				{loggedInUser ? (
 					<LogoutForm
@@ -64,8 +48,23 @@ function App() {
 				(loggedInUser.isAdmin || loggedInUser.isPoller) && (
 					<AddPollPage />
 				)}
-
-			<Polis />
+			{activeTab === 'polis' && (
+				<div>
+					<Polis />
+					{}
+				</div>
+			)}
+			{activeTab === 'threads' && (
+				<div className="Threads test">
+					<div className="Thread form">
+						<ThreadForm />
+					</div>
+					<div className="Thread list">
+						<Threads />
+					</div>
+					{/* Components ONLY for Threads tab (if any) */}
+				</div>
+			)}
 		</div>
 	)
 }

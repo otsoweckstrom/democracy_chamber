@@ -31,7 +31,8 @@ mongoose
 // Routes
 app.use('/api/links', linkRouter)
 app.use('/api/user', userRouter)
-app.use('/api/new_thread', threadRouter)
+app.use('/api/threads', threadRouter)
+
 
 // Start the server
 app.listen(PORT, () => {
